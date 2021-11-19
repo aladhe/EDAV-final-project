@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "analysis of seveal financial index"
+author: "Xinrui Bai, Siyuan Sang, Zewen Shi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
