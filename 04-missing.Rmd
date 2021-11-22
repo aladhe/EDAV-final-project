@@ -1,1 +1,44 @@
 # Missing values
+
+### 4. Missing values chapter
+
+Write a first draft of the missing values chapter of your final project. You do not have to include all of the data you use in the final project. Choose one file and analyze it using techniques discussed in class for missing values. Include a plot using your function from Q2 as well as verbal interpretation of the plot. Edit this link to point to your chapter:
+
+https://aladhe.github.io/EDAV-final-project/missing-values.html
+
+**If your data for the final project has no missing values, you may use one of the following datasets instead for this question. You can include your answer here since it doesn't belong in your final project.**
+  
+  **fivethirtyeight** package: `avengers`, `bachelorette`, `dem_candidates`, `steak_survey`, `trumpworld_polls`
+
+**openintro** package: `birds`, `ucla_textbooks_f18` 
+
+
+```{r}
+
+Project_data = read.csv("stock_data.csv", header = T)
+
+plot_missing_graphs(Project_data,percent=TRUE)
+
+
+plot_missing_graphs(Project_data,percent=FALSE)
+
+
+```
+
+This is the plot of missing value of main columns about stock data, which includes Eurekahedge CTA Index, SG CTA Index, S&P 500, US Aggregate Bond Index, and risk free rate. From the plot, we can see that four of them have evenly amount of missing values. The four missing patterns contain about 75% of the total number of rows.
+
+
+```{r}
+
+
+Project_data_return = read.csv("Data_with_return.csv", header = T)
+plot_missing_graphs(Project_data_return,percent=TRUE)
+
+
+plot_missing_graphs(Project_data_return,percent=FALSE)
+
+
+```
+
+This is the plot of missing value of monthly returns of the main stock data, which includes Eurekahedge CTA Index monthly return, SG CTA Index monthly return, S&P 500 monthly return, US Aggregate Bond Index monthly returns, etc. From the plot, we can see that six of them have evenly amount of missing values. The six missing patterns contain about 75% of the total number of rows.
+
