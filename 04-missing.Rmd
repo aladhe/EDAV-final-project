@@ -1,7 +1,6 @@
 # Missing values
 
 
-
 ### 4. Missing values chapter
 
 Write a first draft of the missing values chapter of your final project. You do not have to include all of the data you use in the final project. Choose one file and analyze it using techniques discussed in class for missing values. Include a plot using your function from Q2 as well as verbal interpretation of the plot. Edit this link to point to your chapter:
@@ -15,7 +14,10 @@ https://aladhe.github.io/EDAV-final-project/missing-values.html
 **openintro** package: `birds`, `ucla_textbooks_f18` 
 
 
+
+
 ```{r}
+
 
 Project_data = read.csv("stock_data.csv", header = T)
 
