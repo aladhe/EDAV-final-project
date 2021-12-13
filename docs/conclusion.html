@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Conclusion | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 7 Conclusion | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <title>Chapter 7 Conclusion | finalproj.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Conclusion | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 7 Conclusion | finalproj.knit" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,13 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Conclusion | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 7 Conclusion | finalproj.knit" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
 
 
-<meta name="date" content="2020-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +31,8 @@
   
 <link rel="prev" href="interactive-component.html"/>
 
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +48,25 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
+<script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
+<script src="libs/dygraphs-1.1.1/shapes.js"></script>
+<script src="libs/moment-2.8.4/moment.js"></script>
+<script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
+<script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
+<script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
+<script src="libs/Dygraph.Plugins.Crosshair-1.0/crosshair.js"></script>
+
 
 
 
@@ -68,16 +83,25 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">final project(temp)</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#times-series-connected-scatterplots"><i class="fa fa-check"></i><b>5.1</b> Times-series Connected Scatterplots</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#custom-time-series-dygraphs"><i class="fa fa-check"></i><b>5.2</b> Custom time series dygraphs</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#correlation-graphs-between-different-indexes"><i class="fa fa-check"></i><b>5.3</b> Correlation Graphs between different Indexes</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#relations-between-different-indexes"><i class="fa fa-check"></i><b>5.4</b> Relations between different Indexes</a></li>
+<li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#boxplots-for-different-indexes"><i class="fa fa-check"></i><b>5.5</b> Boxplots for different Indexes</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a><ul>
+<li class="chapter" data-level="7.1" data-path="conclusion.html"><a href="conclusion.html#summary"><i class="fa fa-check"></i><b>7.1</b> Summary</a></li>
+<li class="chapter" data-level="7.2" data-path="conclusion.html"><a href="conclusion.html#lessons-learned"><i class="fa fa-check"></i><b>7.2</b> Lessons Learned</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -89,7 +113,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
           </h1>
         </div>
 
@@ -97,9 +121,18 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conclusion" class="section level1" number="7">
+<div id="conclusion" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Conclusion</h1>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">7.1</span> Summary</h2>
+<p>We have obtained invaluable hands-on experience of producing a visualization project from scratch. Starting with the selection of datasets, we obtained datasets from five different sources and even requested help of a Bloomberg professional to get the most professional data for our study. Utilizing the skills and techniques we have learned throughout the semester, we cleaned up our raw data, transformed our data into the same format, and extracted the most essential piece of information in it. For the most important part of this project, we exploited a variety of plots we have learned in this course, including bar chart, box plot, histogram, etc. We have also taken advantage of our takeaways from our community contribution assignment by uploading this assignment to Github, so we can contribute to the community and hopefully serve people in the financial industry with little background in statistics by providing transparent graphical illustration of the performance of CTA strategies. This project has been a great opportunity for us to review the important techniques what we have learned in this class, to apply our expertise in statistics to solve problems in other fields, and to contribute to the community in a way that provokes further discussions of this subject.</p>
+<p>Finally, we reiterate the main findings of our project: though CTA performance has been volatile over the last decade, our findings generally support that CTAs have significant potential in generating higher returns and an insurance policy when the value of other indexes steeply decline. For example, the time theories plot has shown when the Nasdaq Composite and S&amp;P 500 took a dive in the financial crisis of 2008, the value of the CTA Index kept increasing through such dire market conditions.</p>
+</div>
+<div id="lessons-learned" class="section level2">
+<h2><span class="header-section-number">7.2</span> Lessons Learned</h2>
+<p>Theoretically, as long as there are tradable trends, CTA strategies will continue to thrive. As the world becomes increasingly volatile, such as the COVID-19 pandemic creating unprecedented volatilities in the market, the value of CTAs will rise as insurance against these drastic changes, as confirmed by our visualizations. The difference in trends between CTA Index and other indexes shown on the plots suggests the validity of the strategy as a hedge against significant exposures in the stock market. From a financial standpoint, however, investors should not expect CTAs to be a panacea for underperforming portfolios. Past performance of CTAs is not indicative of future results, and for CTA strategies to function properly, research-oriented efforts should remain the focus of portfolio managers.</p>
 
+</div>
 </div>
             </section>
 
@@ -111,7 +144,6 @@
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -130,6 +162,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -138,7 +171,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/07-conclusion.Rmd",
+"link": "https://github.com/aladhe/EDAV-final-project/edit/main/07-conclusion.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -146,10 +179,14 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/07-conclusion.Rmd",
+"link": "https://github.com/aladhe/EDAV-final-project/blob/main/07-conclusion.Rmd",
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
