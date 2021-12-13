@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Missing values | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 4 Missing values | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <title>Chapter 4 Missing values | finalproj.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Missing values | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 4 Missing values | finalproj.knit" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,13 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Missing values | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 4 Missing values | finalproj.knit" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
 
 
-<meta name="date" content="2020-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +31,8 @@
   
 <link rel="prev" href="data-transformation.html"/>
 <link rel="next" href="results.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +48,25 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
+<script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
+<script src="libs/dygraphs-1.1.1/shapes.js"></script>
+<script src="libs/moment-2.8.4/moment.js"></script>
+<script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
+<script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
+<script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
+<script src="libs/Dygraph.Plugins.Crosshair-1.0/crosshair.js"></script>
+
 
 
 
@@ -68,16 +83,25 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">final project(temp)</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#times-series-connected-scatterplots"><i class="fa fa-check"></i><b>5.1</b> Times-series Connected Scatterplots</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#custom-time-series-dygraphs"><i class="fa fa-check"></i><b>5.2</b> Custom time series dygraphs</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#correlation-graphs-between-different-indexes"><i class="fa fa-check"></i><b>5.3</b> Correlation Graphs between different Indexes</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#relations-between-different-indexes"><i class="fa fa-check"></i><b>5.4</b> Relations between different Indexes</a></li>
+<li class="chapter" data-level="5.5" data-path="results.html"><a href="results.html#boxplots-for-different-indexes"><i class="fa fa-check"></i><b>5.5</b> Boxplots for different Indexes</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a><ul>
+<li class="chapter" data-level="7.1" data-path="conclusion.html"><a href="conclusion.html#summary"><i class="fa fa-check"></i><b>7.1</b> Summary</a></li>
+<li class="chapter" data-level="7.2" data-path="conclusion.html"><a href="conclusion.html#lessons-learned"><i class="fa fa-check"></i><b>7.2</b> Lessons Learned</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -89,7 +113,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
           </h1>
         </div>
 
@@ -97,8 +121,23 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="missing-values" class="section level1" number="4">
+<div id="missing-values" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Missing values</h1>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p>Write a first draft of the missing values chapter of your final project. You do not have to include all of the data you use in the final project. Choose one file and analyze it using techniques discussed in class for missing values. Include a plot using your function from Q2 as well as verbal interpretation of the plot. Edit this link to point to your chapter:</p>
+<p><a href="https://aladhe.github.io/EDAV-final-project/missing-values.html" class="uri">https://aladhe.github.io/EDAV-final-project/missing-values.html</a></p>
+<p><strong>If your data for the final project has no missing values, you may use one of the following datasets instead for this question. You can include your answer here since it doesn’t belong in your final project.</strong></p>
+<p><strong>fivethirtyeight</strong> package: <code>avengers</code>, <code>bachelorette</code>, <code>dem_candidates</code>, <code>steak_survey</code>, <code>trumpworld_polls</code></p>
+<p><strong>openintro</strong> package: <code>birds</code>, <code>ucla_textbooks_f18</code></p>
+<p>Project_data = read.csv(“data/stock_data.csv”, header = T)</p>
+<p>plot_missing_graphs(Project_data,percent=TRUE)</p>
+<p>plot_missing_graphs(Project_data,percent=FALSE)</p>
+<p>This is the plot of missing value of main columns about stock data, which includes Eurekahedge CTA Index, SG CTA Index, S&amp;P 500, US Aggregate Bond Index, and risk free rate. From the plot, we can see that four of them have evenly amount of missing values. The four missing patterns contain about 75% of the total number of rows.</p>
+<p>Project_data_return = read.csv(“data/Data_with_return.csv”, header = T)
+plot_missing_graphs(Project_data_return,percent=TRUE)</p>
+<p>plot_missing_graphs(Project_data_return,percent=FALSE)</p>
+<p>This is the plot of missing value of monthly returns of the main stock data, which includes Eurekahedge CTA Index monthly return, SG CTA Index monthly return, S&amp;P 500 monthly return, US Aggregate Bond Index monthly returns, etc. From the plot, we can see that six of them have evenly amount of missing values. The six missing patterns contain about 75% of the total number of rows.</p>
 
 </div>
             </section>
@@ -111,7 +150,6 @@
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -130,6 +168,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -138,7 +177,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/04-missing.Rmd",
+"link": "https://github.com/aladhe/EDAV-final-project/edit/main/04-missing.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -146,10 +185,14 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/04-missing.Rmd",
+"link": "https://github.com/aladhe/EDAV-final-project/blob/main/04-missing.Rmd",
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

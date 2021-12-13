@@ -1,0 +1,14 @@
+introduction
+data-sources
+data-transformation
+missing-values
+results
+times-series-connected-scatterplots
+custom-time-series-dygraphs
+correlation-graphs-between-different-indexes
+relations-between-different-indexes
+boxplots-for-different-indexes
+interactive-component
+conclusion
+summary
+lessons-learned
