@@ -1,3 +1,13 @@
 # Interactive component
 
+When we talk about the stock market in the 21st century, we have to mention the 2008 financial crisis. There is no time when the closing price of a stock will affect people's hearts more than this time. Therefore, I chose stock data from 2007 to 2009 in order to see more clearly the monthly changes in market conditions during this period. We applied the three most common stock indexes, Nasdaq, Dow Jones, and S.P500 to characterize the changes during this period. The deeply recessed line charts intuitively shows how stock indexes have fallen like a dive in just a few months.
+
+Judging from the images in the past two years, the rise and fall of the three stock indexes are relatively consistent, which is in line with our previous analysis that the three stock indexes have relatively strong correlations. At the same time, all three stock indexes have fallen significantly since mid-2008, and reached their local minimums around April 2009. The local minimum of Dow Jones is even really close to its historical minimum in this century(6547.05)
+
+<iframe src="nas.html" width="400" height="300"></iframe>
+
+<iframe src="dow.html" width="400" height="300"></iframe>
+
+<iframe src="sp500.html" width="400" height="300"></iframe>
+
 

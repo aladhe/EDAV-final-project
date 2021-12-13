@@ -1,1 +1,292 @@
 # Results
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
+```
+
+
+```{r}
+
+#read in the dataset
+index<-read.csv('data/clean_overall dataset_adjusted.csv',header = TRUE)
+
+
+index_data<-index
+#set date to date format
+index$Date<-as.Date(index$Date)
+
+
+#indicate the maximum and minimum of each index
+max_px<-max(index$PX_LAST)
+max_na<-max(index$Nasdaq)
+max_sg<-max(index$SG_CTA)
+max_do<-max(index$Dow_Jones)
+max_sp<-max(index$S.P500)
+min_px<-min(index$PX_LAST)
+min_na<-min(index$Nasdaq)
+min_sg<-min(index$SG_CTA)
+min_do<-min(index$Dow_Jones)
+min_sp<-min(index$S.P500)
+#divide all the numbers by the maximum of their index
+index$PX_LAST_ad<-(index$PX_LAST-min_px)/(max_px-min_px)
+index$Nasdaq_ad<-(index$Nasdaq-min_na)/(max_na-min_na)
+index$SG_CTA_ad<-(index$SG_CTA-min_sg)/(max_sg-min_sg)
+index$Dow_Jones_ad<-(index$Dow_Jones-min_do)/(max_do-min_do)
+index$S.P500_ad<-(index$S.P500-min_sp)/(max_sp-min_sp)
+```
+
+## Times-series Connected Scatterplots
+
+```{r}
+#show the tendency of change one by one
+plot(index$Date,index$PX_LAST,type='l',xlab='Day',ylab='Bloomberg',col='red')
+
+```
+
+As shown on the plot, the performance of our Bond index has been steadily improving over the past 20 years at a slow pace, as is the trait of this particular investment, offering stable but limited returns.
+
+
+
+```{r}
+
+plot(index$Date,index$Nasdaq,type='l',xlab='Day',ylab='Nasdaq',col='blue')
+
+```
+As shown on the plot, the Nasdaq Composite Index slowly declined from a short-term high at around 2000 followed by the burst of the Internet Bubble, started to recover at around 2003, then plummeted at 2008 because of the financial crisis, and finally started this drastic increase in value since recently prompted by the rapid development of the American technology industry.
+
+
+```{r}
+plot(index$Date,index$SG_CTA,type='l',xlab='Day',ylab='SG CTA',col='green')
+
+```
+
+As shown on the plot, interestingly, we have found out that the CTA Index was able to remain intact in 2008 and the effect of the financial crisis was minimal on this particular strategy. It has grown rapidly as more funds begun to adapt this strategy as a profit booster and risk control mechanism. It had its own low point at 2015, as the commodity market had an unprecedented catastrophe, as prices for everything, from crude oil to industrial metals such as iron ore and copper, plummeted.
+
+
+```{r}
+plot(index$Date,index$Dow_Jones,type='l',xlab='Day',ylab='Dow Jones',col='orange')
+
+```
+
+As shown on the plot, the Dow&Jones Industrial Average Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
+
+
+```{r}
+
+plot(index$Date,index$S.P500,type='l',xlab='Day',ylab='S.P500',col='brown')
+```
+As shown on the plot, the S&P 500  Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
+
+
+```{r}
+#show the time series of each index by plot
+library(ggplot2)
+ggplot(index, aes(Date)) + 
+  geom_line(aes(y=PX_LAST_ad, colour = "Bloomberg")) + 
+  geom_line(aes(y =Nasdaq_ad, colour = "Nasdaq")) +
+  geom_line(aes(y =SG_CTA_ad, colour = "SG CTA"))+
+  geom_line(aes(y =Dow_Jones_ad, colour = "Dow Jones"))+
+  geom_line(aes(y =S.P500_ad, colour = "S.P500"))+
+  ylab('Index')
+```
+
+Combining these time series plots together, we have clearly observed that the CTA Index has led the market on investment returns most of the times, and remained unaffected in the financial crisis of 2008, even if it has shown greater volatility than other indexes.
+
+
+## Custom time series dygraphs 
+
+```{r}
+library(dplyr)
+library(plotly)
+library(hrbrthemes)
+
+#boxplot(index$Date ~ index$Nasdaq)
+
+#Interactive part 1
+Interactive1 <- index %>%
+  ggplot( aes(x=Date, y=Nasdaq)) +
+    geom_area(fill="#69b3a2", alpha=0.5) +
+    geom_line(color="#69b3a2") +
+    ylab("bitcoin price ($)") +
+    theme_ipsum()
+
+
+Interactive1p <- ggplotly(Interactive1)
+
+
+Interactive1p
+
+
+```
+
+
+
+```{r}
+
+
+#### interactive part 2
+library(dygraphs)
+library(xts)          # To make the convertion data-frame / xts format
+library(tidyverse)
+library(lubridate)
+ 
+
+# Check type of variable
+# str(data)
+ 
+# Since my time is currently a factor, I have to convert it to a date-time format!
+#data$datetime <- ymd_hms(index$Date)
+ 
+# Then you can create the xts necessary to use dygraph
+don <- xts(x = index$S.P500, order.by = index$Date)
+
+# Finally the plot
+Interactive2<- dygraph(don) %>%
+  dyOptions(labelsUTC = TRUE, fillGraph=TRUE, fillAlpha=0.1, drawGrid = FALSE, colors="#D8AE5A") %>%
+  dyRangeSelector() %>%
+  dyCrosshair(direction = "vertical") %>%
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.2, hideOnMouseOut = FALSE)  %>%
+  dyRoller(rollPeriod = 1)
+
+
+
+
+Interactive2
+
+```
+
+
+```{r}
+
+# Libraries
+library(ggplot2)
+library(dplyr)
+library(hrbrthemes)
+
+
+# Plot
+index %>%
+  tail(20) %>%
+  ggplot( aes(x=Date, y=Dow_Jones)) +
+    geom_line( color="grey") +
+    geom_point(shape=21, color="black", fill="#69b3a2", size=6) +
+    theme_ipsum() +
+    ggtitle("Evolution of bitcoin price")
+```
+
+
+## Correlation Graphs between different Indexes
+
+
+
+```{r}
+library(GGally)
+
+
+index_without_date = subset(index_data, select = -c(Date) )
+
+
+
+library("PerformanceAnalytics")
+my_data <- mtcars[, c(1,3,4,5,6,7)]
+chart.Correlation(index_without_date, histogram=TRUE, pch=25)
+
+
+```
+
+
+
+```{r}
+#Correlogram with the corrgram library
+# Quick display of two cabapilities of GGally, to assess the distribution and correlation of variables
+library(GGally)
+
+
+# Check correlation between variables
+#cor(data)
+
+# Nice visualization of correlations
+ggcorr(index_without_date, method = c("everything", "pearson"))
+```
+
+
+## Relations between different Indexes
+
+
+
+```{r}
+ggplot(index, aes(x=Nasdaq, y=Dow_Jones) ) +
+  stat_density_2d(aes(fill = ..density..), geom = "raster", contour = FALSE) +
+    scale_fill_distiller(palette="Spectral", direction=-1) +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme(
+    legend.position='none'
+  )
+
+
+
+
+```
+
+```{r}
+# A 2d Hexbin chart
+
+
+ggplot(index, aes(x=Nasdaq, y=S.P500) ) +
+  geom_bin2d(bins = 70) +
+  scale_fill_continuous(type = "viridis") +
+  theme_bw()
+```
+
+
+## Boxplots for different Indexes
+
+
+
+```{r}
+
+library(ggrepel)
+library(palmerpenguins)
+library(randomNames)
+library(tidyverse)
+
+
+ggplot(index_without_date) + geom_boxplot(aes(x =  Nasdaq, y = Nasdaq))
+
+```
+
+
+
+```{r}
+
+ggplot(index_without_date) + geom_boxplot(aes(x =  PX_LAST, y = PX_LAST))
+
+```
+
+
+
+
+```{r}
+
+ggplot(index_without_date) + geom_boxplot(aes(x =  SG_CTA, y = SG_CTA))
+
+
+```
+
+
+```{r}
+
+ggplot(index_without_date) + geom_boxplot(aes(x =Dow_Jones, y = Dow_Jones))
+
+```
+
+
+
+
+```{r}
+
+ggplot(index_without_date) + geom_boxplot(aes(x = S.P500, y = S.P500))
+
+
+```
