@@ -1,7 +1,192 @@
 # Missing values
 
 
-### 4. Missing values chapter
+```{r, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
+```
+
+
+```{r}
+# missing graph
+mycars <- mtcars
+library(tidyverse)
+library(patchwork)
+
+mycars[1:25, "gear"] <- NA
+mycars[10:20, 3:5] <- NA
+for (i in 1:10) mycars[sample(32,1), sample(11,1)] <- NA
+
+mycars <- mtcars
+
+#count the missing patterns
+missing_patterns <- data.frame(is.na(mycars)) %>%
+  group_by_all() %>%
+  count(name = "count", sort = TRUE) %>%
+  ungroup()
+
+
+missing<-data.frame(ifelse(missing_patterns[,1:11]==TRUE,'1','0'))
+missing[3,]<-'2'
+missing[,12]<-missing_patterns[,12]
+
+
+tidypattern <- missing %>% 
+    rownames_to_column("pattern") %>% 
+    gather(key, value, -c(pattern,count)) 
+
+
+p1<-ggplot(tidypattern,aes(x=factor(key),y=fct_rev(factor(pattern)),fill=value)) +
+  geom_tile(color="grey50") +
+  scale_fill_manual(values = c("white", "purple","grey")) +
+  ylab("missing pattern") +
+  theme(legend.position="none")
+
+#to generate a function for the missing plots 
+plot_missing_graphs <- function(df,percent=TRUE) {
+  
+  #missing graphs and make assumptions
+  nrow = nrow(df)
+  ncol = ncol(df)
+
+#generate missing patterns based on the provisions of the questions 
+  missing_patterns <- data.frame(is.na(df)) %>%
+    group_by_all() %>%
+    count(name = "count", sort = TRUE) %>%
+    ungroup()
+
+#group the data based on the requirements of the questions
+  missing_datagroup <- missing_patterns %>% 
+    mutate(index = row_number()) %>%
+    gather(key, value, -c(index,count)) %>%
+    group_by(index) %>%
+    #generate missing patterns based on the provisions of the questions
+    mutate(label = ifelse(sum(value)==0,
+                          "complete", "pass")) %>%
+    ungroup() %>%
+    mutate(label = ifelse(label=="complete", 
+                          "complete",ifelse(value==TRUE, "true", "false") ))
+
+#make loops tto create more comprehensieve quotes and data
+  if(!percent){
+  missing_datagroup1 <- data.frame(count = colSums(is.na(df))) %>% 
+    rownames_to_column("columns") %>% 
+    arrange(desc(count))
+#make loops tto create more comprehensieve quotes and data
+  level <- missing_datagroup1$columns
+  lab1 <- "num rows missing"
+  ylim1 <- max(missing_datagroup1$count)
+
+#make loops tto create more comprehensieve quotes and data
+  missing_datagroup2 <- missing_datagroup %>%
+    group_by(index) %>%
+    summarise(count=mean(count),
+              complete = ifelse(sum(value)==0,"yes","no"))
+  lab2 <- "row count"
+  xlim2 <- max(missing_datagroup2$count)
+  }
+  
+  else{
+  missing_datagroup1 <- data.frame(count = colSums(is.na(df))/nrow*100) %>% 
+    rownames_to_column("columns") %>% 
+    arrange(desc(count))
+  level <- missing_datagroup1$columns
+  lab1 <- "% rows missing"
+  ylim1 <- 100
+
+#make another looo make things better
+  missing_datagroup2 <- missing_datagroup %>%
+    group_by(index) %>%
+    summarise(count=mean(count)/nrow*100, 
+              complete = ifelse(sum(value)==0,"yes","no"))
+  lab2 <- "% rows"
+  xlim2 <-100
+  }
+
+  #start to create the graphs on the top  
+  upper_graph <- ggplot(missing_datagroup1,aes(x=factor(columns,
+                                  levels = level),y=count)) + 
+    geom_bar(stat="identity",
+             fill="lightblue") + 
+    labs(y=lab1,x="", title = "Missing value patterns") +
+    ylim(0,ylim1) +
+    theme_bw() +
+    theme(panel.grid.major.x = 
+            element_blank(),
+      panel.grid.minor.x = element_blank())
+  
+  
+  index <- missing_datagroup2[missing_datagroup2$complete=="yes",]$index
+  cols <- c("false" = "gray83", "true" = "rosybrown2",
+            "complete" = "purple")
+  #generate the first graph based on the requirement
+  middle_graph <- ggplot(missing_datagroup,aes(x=factor(key,levels = level),
+                        y=fct_rev(factor(index)),fill=label)) +
+    geom_tile(color="white") + 
+    scale_fill_manual(values = cols) +
+    labs(x="variables",y="missing patterns") +
+    theme(legend.position = "none")
+  
+  npattern <- nrow(missing_patterns)
+  if(length(index)>=1){
+    for(i in index){
+      p1 <- p1 + geom_text(x=ncol/2+0.5, y=npattern+1-i, 
+                           label="complete cases",size=5)
+    }
+  }
+#start to create the plots on the right-hand side
+  right_hand_plot <- ggplot(missing_datagroup2, aes(x=count, y=fct_rev(factor(index)),
+                          fill=complete)) + 
+    scale_fill_manual(values=c("lightblue", "lightblue")) +
+    geom_bar(stat="identity") +
+    labs(x=lab2,y="") +
+    xlim(0,xlim2) +
+    #to create better graphs
+    theme_bw() +
+    theme(panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank()) +
+    theme(legend.position = "none")
+
+  
+  #we want to generate the graph at the end
+  combination= (middle_graph | right_hand_plot) +  
+    plot_layout(widths = 
+                  c(4, 1))
+combination2 = (upper_graph |  plot_spacer()) + 
+  plot_layout(widths = c(3, 1))
+combination2 / combination +  plot_layout(widths = c(4, 1), heights = c(1, 4))
+}
+
+
+
+
+
+```
+
+
+
+
+
+
+```{r}
+set.seed(66)
+
+plot_missing_graphs(index_data
+                    ,percent=TRUE)
+
+
+
+```
+
+
+```{r}
+set.seed(66)
+
+plot_missing_graphs(index
+                    ,percent=TRUE)
+
+
+
+```
 
 Write a first draft of the missing values chapter of your final project. You do not have to include all of the data you use in the final project. Choose one file and analyze it using techniques discussed in class for missing values. Include a plot using your function from Q2 as well as verbal interpretation of the plot. Edit this link to point to your chapter:
 
