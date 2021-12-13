@@ -1,1 +1,6 @@
 # Data transformation
+
+
+
+
+Before going into further manipulations, we decided to adopt only the closing price of each index on that particular day for the simplicity of our visualizations, because we were interested in the trend over time instead of the variations within one particular trading day. Also, our datasets came from a variety of sources so they differ significantly in format; we organized the data on excel to make it easier to compute by converting everything into the same form we intended. Because our indexes were radically different in mean values, some in hundreds and some in tens of thousands, we decided to do a computation of (X-minimum value) divided by (maximum value-minimum value), and use this proportion for future visualizations. Therefore, all of our indexes could easily fit into the same plot.
