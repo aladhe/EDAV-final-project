@@ -164,70 +164,29 @@ combination2 / combination +  plot_layout(widths = c(4, 1), heights = c(1, 4))
 
 
 
-
+Because we want to explore the situation of the missing values in the data set, we expect to visualize the missing patterns of our data set. The columns represent five kinds of indexes, which are  CTA (Commodity Trading Advisor) Index, S&P 500 Index, Nasdaq Composite Index, US Aggregate Bond Index, and Dow&Jones Industrial Average Index.
 
 
 ```{r}
 set.seed(66)
 
-plot_missing_graphs(index_data
+plot_missing_graphs(index[,2:6]
                     ,percent=TRUE)
 
 
 
 ```
 
+Columns 2-6 describes  the categorization of different kinds of indexes we have utilized in the project. We want to use the function used for plotting the missing patterns to verify the situation of the missing patterns of these five main attributes. Based on the plot above, we can see that for all five kinds of indexes, there is no missing value pattern. 
 
 ```{r}
 set.seed(66)
 
-plot_missing_graphs(index
+plot_missing_graphs(index_data[,6-10]
                     ,percent=TRUE)
 
 
 
 ```
 
-Write a first draft of the missing values chapter of your final project. You do not have to include all of the data you use in the final project. Choose one file and analyze it using techniques discussed in class for missing values. Include a plot using your function from Q2 as well as verbal interpretation of the plot. Edit this link to point to your chapter:
-
-https://aladhe.github.io/EDAV-final-project/missing-values.html
-
-**If your data for the final project has no missing values, you may use one of the following datasets instead for this question. You can include your answer here since it doesn't belong in your final project.**
-  
-  **fivethirtyeight** package: `avengers`, `bachelorette`, `dem_candidates`, `steak_survey`, `trumpworld_polls`
-
-**openintro** package: `birds`, `ucla_textbooks_f18` 
-
-
-
-
-
-
-
-Project_data = read.csv("data/stock_data.csv", header = T)
-
-plot_missing_graphs(Project_data,percent=TRUE)
-
-
-plot_missing_graphs(Project_data,percent=FALSE)
-
-
-
-
-This is the plot of missing value of main columns about stock data, which includes Eurekahedge CTA Index, SG CTA Index, S&P 500, US Aggregate Bond Index, and risk free rate. From the plot, we can see that four of them have evenly amount of missing values. The four missing patterns contain about 75% of the total number of rows.
-
-
-
-
-
-Project_data_return = read.csv("data/Data_with_return.csv", header = T)
-plot_missing_graphs(Project_data_return,percent=TRUE)
-
-
-plot_missing_graphs(Project_data_return,percent=FALSE)
-
-
-
-
-This is the plot of missing value of monthly returns of the main stock data, which includes Eurekahedge CTA Index monthly return, SG CTA Index monthly return, S&P 500 monthly return, US Aggregate Bond Index monthly returns, etc. From the plot, we can see that six of them have evenly amount of missing values. The six missing patterns contain about 75% of the total number of rows.
-
+Columns 7-10 describes the categorization of different kinds of normalization results of indexes we have utilized in the project. We want to use the function used for plotting the missing patterns to verify the situation of the missing patterns of these five main attributes. Based on the plot above, we can see that for all five kinds of indexes, there is no missing value pattern. 
