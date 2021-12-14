@@ -382,6 +382,10 @@ ggplot(index, aes(x=Nasdaq, y=S.P500) ) +
 ## Boxplots for different Indexes
 
 
+Boxplot summary:
+
+As shown on the boxplot, three stock indexes have similar distribution with the mean relatively closer to the lower quartile compared to the upper quartile, while the CTA index shows the exact opposite behavior in terms of interquartile distribution. The higher mean provided by the CTA index in the boxplot could be attractive to investors, as it is suggested by the boxplot that an average investor could only obtain less than optimum returns (close to the lower quartile) by buying the stock indexes. The Bond index offers an evenly distributed inter-quartile range, as is reasonably presumed by its strong financial stability and low risk-related variance.
+
 
 ```{r}
 
@@ -430,5 +434,3 @@ ggplot(index_without_date) + geom_boxplot(aes(x = S.P500, y = S.P500))
 
 ```
 
-Boxplot summary:
-As shown on the boxplot, three stock indexes have similar distribution with the mean relatively closer to the lower quartile compared to the upper quartile, while the CTA index shows the exact opposite behavior in terms of interquartile distribution. The higher mean provided by the CTA index in the boxplot could be attractive to investors, as it is suggested by the boxplot that an average investor could only obtain less than optimum returns (close to the lower quartile) by buying the stock indexes. The Bond index offers an evenly distributed inter-quartile range, as is reasonably presumed by its strong financial stability and low risk-related variance.
