@@ -74,7 +74,11 @@ Interactive2
 ```
 
 
+
+
 As shown on the plot, the S&P 500  Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
+
+
 
 
 
@@ -99,7 +103,11 @@ Interactive3
 ```
 
 
+
+
 As shown on the plot, the performance of our Bond index has been steadily improving over the past 20 years at a slow pace, as is the trait of this particular investment, offering stable but limited returns.
+
+
 
 
 
@@ -124,7 +132,11 @@ Interactive4
 
 ```
 
+
+
 As shown on the plot, the Nasdaq Composite Index slowly declined from a short-term high at around 2000 followed by the burst of the Internet Bubble, started to recover at around 2003, then plummeted at 2008 because of the financial crisis, and finally started this drastic increase in value since recently prompted by the rapid development of the American technology industry.
+
+
 
 
 
@@ -149,7 +161,11 @@ Interactive5
 ```
 
 
+
+
 As shown on the plot, interestingly, we have found out that the CTA Index was able to remain intact in 2008 and the effect of the financial crisis was minimal on this particular strategy. It has grown rapidly as more funds begun to adapt this strategy as a profit booster and risk control mechanism. It had its own low point at 2015, as the commodity market had an unprecedented catastrophe, as prices for everything, from crude oil to industrial metals such as iron ore and copper, plummeted.
+
+
 
 
 ```{r}
@@ -172,7 +188,11 @@ Interactive6
 
 ```
 
+
+
 As shown on the plot, the Dow&Jones Industrial Average Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
+
+
 
 
 
@@ -188,7 +208,11 @@ ggplot(index, aes(Date)) +
   ylab('Index')
 ```
 
+
+
 Combining these time series plots together, we have clearly observed that the CTA Index has led the market on investment returns most of the times, and remained unaffected in the financial crisis of 2008, even if it has shown greater volatility than other indexes.
+
+
 
 
 ## Times-series Connected Scatterplots
