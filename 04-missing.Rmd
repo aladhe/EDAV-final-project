@@ -8,6 +8,11 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
 
 ```{r}
 # missing graph
+
+#read in the dataset
+index<-read.csv('data/clean_overall dataset_adjusted.csv',header = TRUE)
+
+index_data<-index
 mycars <- mtcars
 library(tidyverse)
 library(patchwork)
