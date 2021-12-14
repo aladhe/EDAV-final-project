@@ -35,90 +35,8 @@ index$Dow_Jones_ad<-(index$Dow_Jones-min_do)/(max_do-min_do)
 index$S.P500_ad<-(index$S.P500-min_sp)/(max_sp-min_sp)
 ```
 
-## Times-series Connected Scatterplots
 
-```{r}
-#show the tendency of change one by one
-plot(index$Date,index$PX_LAST,type='l',xlab='Day',ylab='Bloomberg',col='red')
-
-```
-
-As shown on the plot, the performance of our Bond index has been steadily improving over the past 20 years at a slow pace, as is the trait of this particular investment, offering stable but limited returns.
-
-
-
-```{r}
-
-plot(index$Date,index$Nasdaq,type='l',xlab='Day',ylab='Nasdaq',col='blue')
-
-```
-As shown on the plot, the Nasdaq Composite Index slowly declined from a short-term high at around 2000 followed by the burst of the Internet Bubble, started to recover at around 2003, then plummeted at 2008 because of the financial crisis, and finally started this drastic increase in value since recently prompted by the rapid development of the American technology industry.
-
-
-```{r}
-plot(index$Date,index$SG_CTA,type='l',xlab='Day',ylab='SG CTA',col='green')
-
-```
-
-As shown on the plot, interestingly, we have found out that the CTA Index was able to remain intact in 2008 and the effect of the financial crisis was minimal on this particular strategy. It has grown rapidly as more funds begun to adapt this strategy as a profit booster and risk control mechanism. It had its own low point at 2015, as the commodity market had an unprecedented catastrophe, as prices for everything, from crude oil to industrial metals such as iron ore and copper, plummeted.
-
-
-```{r}
-plot(index$Date,index$Dow_Jones,type='l',xlab='Day',ylab='Dow Jones',col='orange')
-
-```
-
-As shown on the plot, the Dow&Jones Industrial Average Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
-
-
-```{r}
-
-plot(index$Date,index$S.P500,type='l',xlab='Day',ylab='S.P500',col='brown')
-```
-As shown on the plot, the S&P 500  Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
-
-
-```{r}
-#show the time series of each index by plot
-library(ggplot2)
-ggplot(index, aes(Date)) + 
-  geom_line(aes(y=PX_LAST_ad, colour = "Bloomberg")) + 
-  geom_line(aes(y =Nasdaq_ad, colour = "Nasdaq")) +
-  geom_line(aes(y =SG_CTA_ad, colour = "SG CTA"))+
-  geom_line(aes(y =Dow_Jones_ad, colour = "Dow Jones"))+
-  geom_line(aes(y =S.P500_ad, colour = "S.P500"))+
-  ylab('Index')
-```
-
-Combining these time series plots together, we have clearly observed that the CTA Index has led the market on investment returns most of the times, and remained unaffected in the financial crisis of 2008, even if it has shown greater volatility than other indexes.
-
-
-## Custom time series dygraphs 
-
-```{r}
-library(dplyr)
-library(plotly)
-library(hrbrthemes)
-
-#boxplot(index$Date ~ index$Nasdaq)
-
-#Interactive part 1
-Interactive1 <- index %>%
-  ggplot( aes(x=Date, y=Nasdaq)) +
-    geom_area(fill="#69b3a2", alpha=0.5) +
-    geom_line(color="#69b3a2") +
-    ylab("bitcoin price ($)") +
-    theme_ipsum()
-
-
-Interactive1p <- ggplotly(Interactive1)
-
-
-Interactive1p
-
-
-```
-
+## Custom Time-Series Dygraphs 
 
 
 ```{r}
@@ -156,6 +74,184 @@ Interactive2
 ```
 
 
+As shown on the plot, the S&P 500  Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
+
+
+
+```{r}
+
+
+don <- xts(x = index$PX_LAST, order.by = index$Date)
+
+# Finally the plot
+Interactive3<- dygraph(don) %>%
+  dyOptions(labelsUTC = TRUE, fillGraph=TRUE, fillAlpha=0.1, drawGrid = FALSE, colors="#69b3a2") %>%
+  dyRangeSelector() %>%
+  dyCrosshair(direction = "vertical") %>%
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.2, hideOnMouseOut = FALSE)  %>%
+  dyRoller(rollPeriod = 1)
+
+
+
+
+Interactive3
+
+```
+
+
+As shown on the plot, the performance of our Bond index has been steadily improving over the past 20 years at a slow pace, as is the trait of this particular investment, offering stable but limited returns.
+
+
+
+
+```{r}
+
+
+don <- xts(x = index$Nasdaq, order.by = index$Date)
+
+# Finally the plot
+Interactive4<- dygraph(don) %>%
+  dyOptions(labelsUTC = TRUE, fillGraph=TRUE, fillAlpha=0.1, drawGrid = FALSE, colors="#ae5ad8") %>%
+  dyRangeSelector() %>%
+  dyCrosshair(direction = "vertical") %>%
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.2, hideOnMouseOut = FALSE)  %>%
+  dyRoller(rollPeriod = 1)
+
+
+
+
+Interactive4
+
+```
+
+As shown on the plot, the Nasdaq Composite Index slowly declined from a short-term high at around 2000 followed by the burst of the Internet Bubble, started to recover at around 2003, then plummeted at 2008 because of the financial crisis, and finally started this drastic increase in value since recently prompted by the rapid development of the American technology industry.
+
+
+
+```{r}
+
+
+don <- xts(x = index$SG_CTA, order.by = index$Date)
+
+# Finally the plot
+Interactive5<- dygraph(don) %>%
+  dyOptions(labelsUTC = TRUE, fillGraph=TRUE, fillAlpha=0.1, drawGrid = FALSE, colors="#5ad86f") %>%
+  dyRangeSelector() %>%
+  dyCrosshair(direction = "vertical") %>%
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.2, hideOnMouseOut = FALSE)  %>%
+  dyRoller(rollPeriod = 1)
+
+
+
+
+Interactive5
+
+```
+
+
+As shown on the plot, interestingly, we have found out that the CTA Index was able to remain intact in 2008 and the effect of the financial crisis was minimal on this particular strategy. It has grown rapidly as more funds begun to adapt this strategy as a profit booster and risk control mechanism. It had its own low point at 2015, as the commodity market had an unprecedented catastrophe, as prices for everything, from crude oil to industrial metals such as iron ore and copper, plummeted.
+
+
+```{r}
+
+
+don <- xts(x = index$Dow_Jones, order.by = index$Date)
+
+# Finally the plot
+Interactive6<- dygraph(don) %>%
+  dyOptions(labelsUTC = TRUE, fillGraph=TRUE, fillAlpha=0.1, drawGrid = FALSE, colors="#d85ac3") %>%
+  dyRangeSelector() %>%
+  dyCrosshair(direction = "vertical") %>%
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.2, hideOnMouseOut = FALSE)  %>%
+  dyRoller(rollPeriod = 1)
+
+
+
+
+Interactive6
+
+```
+
+As shown on the plot, the Dow&Jones Industrial Average Indexes have generally followed similar trend because they have similar components. The most notable trend would be the steep decline in 2008 followed by the financial crisis and in 2020 because of the effect of the coronavirus on the economy. Besides these temporary declines, the two stock indexes have grown at a reasonable rate throughout the years.
+
+
+
+```{r}
+#show the time series of each index by plot
+library(ggplot2)
+ggplot(index, aes(Date)) + 
+  geom_line(aes(y=PX_LAST_ad, colour = "Bloomberg")) + 
+  geom_line(aes(y =Nasdaq_ad, colour = "Nasdaq")) +
+  geom_line(aes(y =SG_CTA_ad, colour = "SG CTA"))+
+  geom_line(aes(y =Dow_Jones_ad, colour = "Dow Jones"))+
+  geom_line(aes(y =S.P500_ad, colour = "S.P500"))+
+  ylab('Index')
+```
+
+Combining these time series plots together, we have clearly observed that the CTA Index has led the market on investment returns most of the times, and remained unaffected in the financial crisis of 2008, even if it has shown greater volatility than other indexes.
+
+
+## Times-series Connected Scatterplots
+
+```{r}
+#show the tendency of change one by one
+plot(index$Date,index$PX_LAST,type='l',xlab='Day',ylab='Bloomberg',col='red')
+
+```
+
+
+
+```{r}
+
+plot(index$Date,index$Nasdaq,type='l',xlab='Day',ylab='Nasdaq',col='blue')
+
+```
+
+
+```{r}
+plot(index$Date,index$SG_CTA,type='l',xlab='Day',ylab='SG CTA',col='green')
+
+```
+
+
+```{r}
+plot(index$Date,index$Dow_Jones,type='l',xlab='Day',ylab='Dow Jones',col='orange')
+
+```
+
+
+
+```{r}
+
+plot(index$Date,index$S.P500,type='l',xlab='Day',ylab='S.P500',col='brown')
+```
+
+
+```{r}
+library(dplyr)
+library(plotly)
+library(hrbrthemes)
+
+#boxplot(index$Date ~ index$Nasdaq)
+
+#Interactive part 1
+Interactive1 <- index %>%
+  ggplot( aes(x=Date, y=Nasdaq)) +
+    geom_area(fill="#69b3a2", alpha=0.5) +
+    geom_line(color="#69b3a2") +
+    ylab("Nasdaq Index") +
+    theme_ipsum()
+
+
+Interactive1p <- ggplotly(Interactive1)
+
+
+Interactive1p
+
+
+```
+
+
 ```{r}
 
 # Libraries
@@ -173,6 +269,7 @@ index %>%
     theme_ipsum() +
     ggtitle("Evolution of bitcoin price")
 ```
+
 
 
 ## Correlation Graphs between different Indexes
