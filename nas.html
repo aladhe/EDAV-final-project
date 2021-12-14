@@ -30,7 +30,7 @@ div.tooltip {
 
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 800 - margin.left - margin.right,
+    width = 700 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 // parse the date / time
@@ -61,7 +61,7 @@ var svg = d3.select("body").append("svg")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Get the data
-d3.csv("https://raw.githubusercontent.com/aladhe/5702-final/main/data/stock07-09.csv").then(function(data) {
+d3.csv("https://raw.githubusercontent.com/aladhe/5702-final/main/data/nas.csv").then(function(data) {
 
   // format the data
   data.forEach(function(d) {
