@@ -4,10 +4,10 @@ When we talk about the stock market in the 21st century, we have to mention the 
 
 Judging from the images in the past two years, the rise and fall of the three stock indexes are relatively consistent, which is in line with our previous analysis that the three stock indexes have relatively strong correlations. At the same time, all three stock indexes have fallen significantly since mid-2008, and reached their local minimums around April 2009. The local minimum of Dow Jones is even really close to its historical minimum in this century(6547.05)
 
-<iframe src="nas.html" width="400" height="300"></iframe>
+<iframe src="nas.html" width="600" height="450"></iframe>
 
-<iframe src="dow.html" width="400" height="300"></iframe>
+<iframe src="dow.html" width="600" height="450"></iframe>
 
-<iframe src="sp500.html" width="400" height="300"></iframe>
+<iframe src="sp500.html" width="600" height="450"></iframe>
 
 
